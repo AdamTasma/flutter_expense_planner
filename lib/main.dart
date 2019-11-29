@@ -9,8 +9,15 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense Planner'),
       ),
-      body: Center(
-        child: Text('Widget Playground!'),
+      body: Column(
+        children: <Widget>[
+          Card(
+            child: Text('chart'),
+          ),
+          Card(
+            child: Text('list of transactions'),
+          ),
+        ],
       ),
     );
   }
