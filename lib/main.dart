@@ -40,7 +40,7 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            width: double.infinity,
+//            width: double.infinity,
             child: Card(
               color: Colors.blue,
               child: Text('chart'),
@@ -50,7 +50,17 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: transactions.map((tx) {
               return Card(
-                child: Text(tx.title),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(tx.amount.toString()),
+                    ),
+                    Column(children: <Widget>[
+                      Text(tx.title),
+                      Text(tx.date.day.toString()),
+                    ])
+                  ],
+                ),
               );
             }).toList(),
           ),
