@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transaction.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,7 +41,7 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-//            width: double.infinity,
+            width: double.infinity,
             child: Card(
               color: Colors.blue,
               child: Text('chart'),
@@ -53,8 +54,7 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.purple,
@@ -63,7 +63,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        transaction.amount.toString(),
+                        '\$${transaction.amount}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -71,9 +71,19 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Column(children: <Widget>[
-                      Text(transaction.title),
-                      Text(transaction.date.day.toString()),
+                    Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+                      Text(
+                        transaction.title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(DateFormat.yMMMd().format(transaction.date),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          )),
                     ])
                   ],
                 ),
